@@ -111,7 +111,12 @@
         constructor: DateRangePicker,
 
         setOptions: function(options, callback) {
-            this.timeZone = moment.defalutZone? moment.defaultZone.name: Intl.DateTimeFormat().resolvedOptions().timeZone;
+            this.timeZone = moment.defaultZone? moment.defaultZone.name: Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+            if (typeof options.timeZone === 'string')
+                this.timeZone = options.timeZone;
+
+            console.log(this.timeZone);
 
             this.startDate = moment.tz(this.timeZone).startOf('day');
             this.endDate = moment.tz(this.timeZone).endOf('day');
@@ -163,9 +168,6 @@
 
             if (typeof options.separator === 'string')
                 this.separator = options.separator;
-
-            if (typeof options.timeZone === 'string')
-                this.timeZone = options.timeZone;
 
             if (typeof options.startDate === 'string')
                 this.startDate = moment.tz(options.startDate, this.format, this.timeZone);

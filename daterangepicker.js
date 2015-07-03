@@ -116,8 +116,6 @@
             if (typeof options.timeZone === 'string')
                 this.timeZone = options.timeZone;
 
-            console.log(this.timeZone);
-
             this.startDate = moment.tz(this.timeZone).startOf('day');
             this.endDate = moment.tz(this.timeZone).endOf('day');
 
